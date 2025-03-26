@@ -100,6 +100,7 @@ def cluster_transactions(df, n_clusters):
     from sklearn.cluster import KMeans
     from sklearn.decomposition import PCA
     from sklearn.preprocessing import StandardScaler
+    import pandas as pd
     
     # Sélection des features à utiliser
     features = df.drop(['Time', 'Class'], axis=1)
@@ -116,4 +117,8 @@ def cluster_transactions(df, n_clusters):
     kmeans = KMeans(n_clusters=n_clusters, random_state=42)
     clusters = kmeans.fit_predict(reduced_features)
     
-    return reduced_features, clusters 
+    # Créer un DataFrame avec les résultats
+    result_df = pd.DataFrame(reduced_features, columns=['x', 'y'])
+    result_df['Cluster'] = clusters
+    
+    return result_df

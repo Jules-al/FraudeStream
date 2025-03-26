@@ -78,8 +78,19 @@ def show_data_analysis():
         
         if st.button("Créer les clusters"):
             st.info("Création des clusters...")
-            st.write(cluster_transactions(df, n_clusters))
-
+    
+             # Appel de la fonction
+            clustered_data = cluster_transactions(df, n_clusters)
+    
+            fig_clusters = px.scatter(
+                clustered_data, 
+                x='x',  # Colonne pour l'axe x
+                y='y',  # Colonne pour l'axe y
+                color='Cluster',
+                title="Clustering des transactions"
+    )       
+    
+            st.plotly_chart(fig_clusters)
     except FileNotFoundError:
         st.error("Le fichier de données n'a pas été trouvé. Veuillez placer le fichier creditcard.csv dans le dossier data/")
 
