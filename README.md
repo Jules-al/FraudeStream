@@ -21,6 +21,8 @@ pip install -r requirements.txt
 ## Utilisation
 
 Pour lancer l'application :
+
+Telecherger le dataset sur kaggle et le mettre dans le dossier data : https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
 ```bash
 streamlit run app/main.py
 ```
